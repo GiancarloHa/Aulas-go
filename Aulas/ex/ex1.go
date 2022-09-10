@@ -9,21 +9,13 @@ import (
 type alunos struct {
 	aluno string
 	notas [4] float64
-	nome string
 	media float64
 }
 
 func main () {
-
-
-}
-
-func mediaDosalunos (estudante, es string) (media float64){
-	totaldenotas := 4.0
-
 	var estudante1 alunos
-	estudante1.aluno = "Diego Podre"
-	estudante1.notas = [4] float64 {}
+	estudante1.aluno = "Diego"
+	estudante1.notas = [4] float64 {6.0, 6.0, 6.0, 6.0}
 
 	var estudante2 alunos
 	estudante2.aluno = "João"
@@ -34,14 +26,24 @@ func mediaDosalunos (estudante, es string) (media float64){
 	estudante3.notas = [4] float64 {7.0, 7.6, 9.0, 10.0}
 
 	var mediaaluno1 alunos
-	mediaaluno1.nome = estudante1.aluno
-	mediaaluno1.media = (estudante1.notas[0] + estudante1.notas[1] + estudante1.notas[2] + estudante1.notas[3]) / (totaldenotas)
+	mediaaluno1.media = calculodemedia(estudante1.notas[0], estudante1.notas[1], estudante1.notas[2], estudante1.notas[3])
 
 	var mediaaluno2 alunos
-	mediaaluno2.nome = estudante2.aluno
-	mediaaluno2.media = (estudante2.notas[0] + estudante2.notas[1] + estudante2.notas[2] + estudante2.notas[3]) / (totaldenotas)
+	mediaaluno2.media = calculodemedia(estudante2.notas[0], estudante2.notas[1], estudante2.notas[2], estudante2.notas[3])
 
 	var mediaaluno3 alunos
-	mediaaluno3.nome = estudante3.aluno
-	mediaaluno3.media = (estudante3.notas[0] + estudante3.notas[1] + estudante3.notas[2] + estudante3.notas[3]) / (totaldenotas)
+	mediaaluno3.media = calculodemedia(estudante3.notas[0], estudante3.notas[1], estudante3.notas[2], estudante3.notas[3])
+
+	if mediaaluno1.media > mediaaluno2.media && mediaaluno1.media > mediaaluno3.media {
+		fmt.Println(estudante1.aluno, mediaaluno1.media)
+	} else if mediaaluno2.media > mediaaluno1.media && mediaaluno2.media > mediaaluno3.media {
+		fmt.Println(estudante2.aluno, mediaaluno2.media)
+	} else {
+		fmt.Println(estudante3.aluno, mediaaluno3.media)
+	} 
+}
+
+func calculodemedia (n1, n2, n3, n4 float64) (media float64) {
+	media = (n1 + n2 + n3 + n4) / 4
+	return
 }
